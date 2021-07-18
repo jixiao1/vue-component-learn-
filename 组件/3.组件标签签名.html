@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #box{
+        width: 100px;
+        height: 100px;
+        text-align: center;
+        line-height: 100px;
+        background-color: chocolate;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <!-- 组件标签名字不可以使用html标签 -->
+      
+      <!-- 使用webpack构建，实际上是区分大小写的 -->
+      <Foo></Foo>
+      <foo></foo>
+      
+      <!-- 使用webpack构建，实际上以下两种写法都行 -->
+      <my-com></my-com>
+      <myCom></myCom>
+
+
+      <!-- 使用webpack构建，实际上单标签双标签都支持 -->
+      <box></box>
+      <box/>
+      <h1>hello</h1>
+
+    </div>
+
+    <script src="./vue.js"></script>
+    <script>
+      // 组件标签名字，不能是html标签，其他都行
+      Vue.component("box", {
+        template: `
+        <div id="box">
+          <h1>test</h1>
+        </div>
+      `,
+      });
+
+      Vue.component("Foo", {
+        template: `
+        <div id="box">
+          <h1>test2</h1>
+        </div>
+      `,
+      });
+
+      Vue.component("my-com", {
+        template: `
+        <div id="box">
+          <h1>test3</h1>
+        </div>
+      `,
+      });
+
+      var vm = new Vue({
+        el: "#app",
+      });
+    </script>
+  </body>
+</html>
